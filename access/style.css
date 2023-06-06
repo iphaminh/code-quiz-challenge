@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 80px 10px;
+    margin-top: 2%;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+nav {
+    font-size: 23px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 10%;
+}  
+
+#quiz-container {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#question {
+    font-size: 44px;
+    margin-bottom: 20px;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 3%;
+    padding-left: 70px;
+    padding-right: 70%;
+}
+
+.choice {
+    margin: 10px 0;
+    padding: 10px 30px;
+    font-size: 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+footer {
+    margin: 7% 10%;
+    padding-right: 7%;
+}
+
+footer .container {
+    padding-top: 15px;
+    padding-left: 23px;
+}
+footer .containerRight {
+    display: flex;
+    justify-content: start;
+    font-size: 37px;
+    color: #dee2e6;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+footer .containerWrong {
+    display: flex;
+    justify-content: start;
+    font-size: 37px;
+    color: #dee2e6;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
