@@ -55,6 +55,10 @@ main {
     text-align: left;
 }
 
+.choice:hover {
+    background-color: #8335cc;
+}
+
 #feedback {
     margin-top: 20px;
     font-size: 18px;
