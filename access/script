@@ -33,14 +33,14 @@ var currentQuestionIndex = 0;
 // Function to display a question
 function displayQuestion() {
     // Get the current question from the global array of questions
-    var question = questions[currentQuestionIndex];
+    var question = questions[currentQuestionIndex]; //start from index 0 of the array of questions, meaning question 1 started
 
-    // Clear out any old question and choices
-    document.getElementById('question').textContent = '';
-    document.getElementById('choices').innerHTML = '';
+    // where to display and answer. Clear out any old question and choices
+    var questionContainer = document.getElementById('question').textContent = '';
+    var choiceContainer = document.getElementById('choices').innerHTML = '';
 
     // Add the new question and choices to the page
-    document.getElementById('question').textContent = question.question;
+    questionContainer.textContent = question.title;
     question.choices.forEach(function(choice, i) {
         var button = document.createElement('button');
         button.textContent = choice;
