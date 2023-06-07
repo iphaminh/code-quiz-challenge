@@ -1,11 +1,30 @@
 // This is an array of question objects. Each object represents one question and its choices.
 var questions = [
     {
-        question: "What does the 'document' object represent in the Document Object Model (DOM)?",
-        choices: ["The current HTML document", "A type of node", "An interface for accessing HTML elements", "All of the above"],
-        answer: "All of the above"
+        title: "Question 1: Which HTML attribute is used to define inline styles?",
+        choices: ["class", "styles", "font", "style", "id"],
+        answer: "style"
     },
-    // Add more question objects here...
+    {
+        title: "Question 2: In Final Fantasy 7 Remake, who is the main protagonist?",
+        choices: ["Cloud Strife", "Tifa Lockhart", "Barret Wallace", "Aerith Gainsborough"],
+        answer: "Cloud Strife"
+    },
+    {
+        title: "Question 3: Who is the primary antagonist in Final Fantasy 8?",
+        choices: ["Ultimecia", "Seifer Almasy", "Edea Kramer", "Rinoa Heartilly"],
+        answer: "Ultimecia"
+    },
+    {
+        title: "Question 4: What is the name of the classified U.S. government program revealed in 2017 to investigate UFOs?",
+        choices: ["Blue Book Project", "Majestic 12", "Advanced Aviation Threat Identification Program", "Project Sign"],
+        answer: "Advanced Aviation Threat Identification Program"
+    },
+    {
+        title: "Question 5: Which of these foods is NOT generally considered to be good for eye health?",
+        choices: ["Carrots", "Leafy greens", "Fish", "Sugary drinks"],
+        answer: "Sugary drinks"
+    },
 ];
 
 // We start with the first question
@@ -13,7 +32,7 @@ var currentQuestionIndex = 0;
 
 // Function to display a question
 function displayQuestion() {
-    // Get the current question
+    // Get the current question from the global array of questions
     var question = questions[currentQuestionIndex];
 
     // Clear out any old question and choices
