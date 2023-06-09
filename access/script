@@ -35,15 +35,17 @@ function displayQuestion() {
     // Get the current question from the global array of questions
     var question = questions[currentQuestionIndex]; //start from index 0 of the array of questions, meaning question 1 started
 
-    // where to display and answer. Clear out any old question and choices
+    // where to display and answer. Also clear out any old question and choices
     var questionContainer = document.getElementById('question').textContent = '';
     var choiceContainer = document.getElementById('choices').innerHTML = '';
 
     // Add the new question and choices to the page
     questionContainer.textContent = question.title;
-    question.choices.forEach(function(choice, i) {
-        var button = document.createElement('button');
-        button.textContent = choice;
+
+    // Now add each choice to the page
+    question.choices.forEach(function(choice, i) { // meaning run a foreach function in choices array 
+        var button = document.createElement('button'); // create a button element
+        button.textContent = choice; // 
         button.setAttribute('class', 'choice');
         button.setAttribute('value', choice);
 
