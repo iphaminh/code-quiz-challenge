@@ -26,9 +26,12 @@ var questions = [
         answer: "Sugary drinks"
     },
 ];
+var endQuizMessage = "All DONE!";
+var endQuizInstructions = "Your final score is: ";
 
 // We start with the first question
 var currentQuestionIndex = 0;
+var score = 0;
 
 // Function to display a question
 function displayQuestion() {
@@ -55,7 +58,10 @@ function displayQuestion() {
         // Add the choice to the page
        choiceContainer.appendChild(button); 
     });
-        
+}
+
+function startCountDown() {
+
         var countdown = 100;
         var countDisplay = document.getElementById('countdown');
     
@@ -67,16 +73,24 @@ function displayQuestion() {
                 endQuiz();
             }
         }, 1000);//every choices array now has button with class and value
-    };
+    }
 
 
 // Function to check if a choice is correct
 function checkAnswer() {
-    // If the choice is correct and the value is match the answer the correct
+    // Get a reference to the result container
+    var resultContainerRight = document.querySelector('.containerRight');
+    var resultContainerWrong = document.querySelector('.containerWrong');
+
+    // If the choice is correct and the value matches the answer
     if (this.value === questions[currentQuestionIndex].answer) {
-        alert('Correct!'); //Need to change it to RIGHT OR WRONG in the footer/container
-    } else { //otherwise wrong
-        alert('Wrong!');
+        // Display a success message
+        resultContainerRight.textContent = 'Right!';
+        resultContainerWrong.textContent = '';
+    } else {
+        // Otherwise, display a failure message
+        resultContainerWrong.textContent = 'Wrong!';
+        resultContainerRight.textContent = '';
     }
 
     // Move to the next question
@@ -90,12 +104,12 @@ function checkAnswer() {
     }
 }
 
+
+    // Function to end the quiz
 // Function to end the quiz
 function endQuiz() {
-    // Do something to end the quiz...
+    // Clear out the question are
 }
-
 // Start the quiz when the page loads
 displayQuestion();
-
-
+startCountDown();
