@@ -34,35 +34,48 @@ var currentQuestionIndex = 0;
 function displayQuestion() {
     // Get the current question from the global array of questions
     var question = questions[currentQuestionIndex]; //start from index 0 of the array of questions, meaning question 1 started
-
     // where to display and answer. Also clear out any old question and choices
-    var questionContainer = document.getElementById('question').textContent = '';
-    var choiceContainer = document.getElementById('choices').innerHTML = '';
-
-    // Add the new question and choices to the page
+    var questionContainer = document.getElementById('question');
+    var choiceContainer = document.getElementById('choices');
+    questionContainer.textContent = '';
+    choiceContainer.innerHTML = '';
     questionContainer.textContent = question.title;
+
 
     // Now add each choice to the page
     question.choices.forEach(function(choice, i) { // meaning run a foreach function in choices array 
         var button = document.createElement('button'); // create a button element
-        button.textContent = choice; // 
-        button.setAttribute('class', 'choice');
-        button.setAttribute('value', choice);
+        button.textContent = choice; // now inside the button we have to choose what is the current choice we have here!! thanks to the foreach function
+        button.setAttribute('class', 'choice'); // setting up the class for button
+        button.setAttribute('value', choice); // declare the current value of the button. Again thanks to foreach function
 
         // Add an event listener to each choice
-        button.onclick = checkAnswer;
+        button.onclick = checkAnswer; //after "machanically" setting the button function, we now adding onclick function on the button to check the answer
 
         // Add the choice to the page
-        document.getElementById('choices').appendChild(button);
+       choiceContainer.appendChild(button); 
     });
-}
+        
+        var countdown = 100;
+        var countDisplay = document.getElementById('countdown');
+    
+        var timer = setInterval(function() {
+            countdown--;
+            countDisplay.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(timer);
+                endQuiz();
+            }
+        }, 1000);//every choices array now has button with class and value
+    };
+
 
 // Function to check if a choice is correct
 function checkAnswer() {
-    // If the choice is correct...
+    // If the choice is correct and the value is match the answer the correct
     if (this.value === questions[currentQuestionIndex].answer) {
-        alert('Correct!');
-    } else {
+        alert('Correct!'); //Need to change it to RIGHT OR WRONG in the footer/container
+    } else { //otherwise wrong
         alert('Wrong!');
     }
 
@@ -84,3 +97,5 @@ function endQuiz() {
 
 // Start the quiz when the page loads
 displayQuestion();
+
+
