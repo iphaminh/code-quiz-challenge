@@ -75,6 +75,7 @@ function startCountDown() {
         }, 100);//every choices array now has button with class and value
     }
 
+    
 
 // Function to check if a choice is correct
 function checkAnswer() {
@@ -87,6 +88,7 @@ function checkAnswer() {
         // Display a success message
         resultContainerRight.textContent = 'Right!';
         resultContainerWrong.textContent = '';
+        score++; //
     } else {
         // Otherwise, display a failure message
         resultContainerWrong.textContent = 'Wrong!';
@@ -102,7 +104,8 @@ function checkAnswer() {
     } else {
         displayQuestion();
     }
-}
+    
+} 
 
 function endQuiz() {
     var endQuizMessage = "All DONE!";
