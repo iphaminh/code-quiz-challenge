@@ -149,7 +149,46 @@ function endQuiz() {
     content.appendChild(viewScoresButton);
 }
 
+function saveScore() {
+    var name = document.getElementById('playerName');
+    var newScore = {
+        name: playerName,
+        score: score
+    };
 
+    var highScores = localStorage.getItem('highScores');
+    if (highScores === null) {
+        highScores = [];
+    } else {
+        highScores = JSON.parse(highScores);
+    }
+    highScores.push(newScore);
+    localStorage.setItem('highScore', JSON.stringify(highScores));
+}
+
+function viewHighScores() {
+    // Retrieve the scores
+    var highScores = localStorage.getItem('highScores');
+    if (highScores === null) {
+        alert('No high scores yet!');
+        return;
+    }
+
+    // Parse into a JavaScript array
+    highScores = JSON.parse(highScores);
+
+    // Sort the scores
+    highScores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+
+    // Display the scores
+    highScores.forEach(function(score) {
+        var scoreElement = document.createElement('p');
+        scoreElement.textContent = score.name + ': ' + score.score;
+        document.body.appendChild(scoreElement);
+    });
+}
 
 
 // Start the quiz when the page loads
