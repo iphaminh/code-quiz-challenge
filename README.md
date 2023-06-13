@@ -13,6 +13,10 @@ This project is a web-based quiz game that tests the user's knowledge on a varie
 ## Installation:
 To install the project, clone the repository from GitHub and open the index.html file in a web browser.
 
+## Deployment
+
+You can access the live application at [Deployment Link](https://iphaminh.github.io/code-quiz-challenge/)
+
 ## Usage:
 Once the web page is loaded, the user can start the quiz by clicking the "Start Quiz" button. The user will then be presented with a series of questions. The user selects an answer by clicking on one of the choices. The user's score is based on the number of correct answers. The score and the user's name are saved and can be viewed by clicking the "View High Score" link.
 
