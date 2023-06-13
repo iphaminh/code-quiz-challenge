@@ -27,6 +27,10 @@ var questions = [
     },
 ];
 var endQuizMessage = "All DONE!";
+var endMessage = document.createElement("h2");
+endMessage.textContent = endQuizMessage
+endMessage.setAttribute('class', 'endMessage');
+document.body.appendChild(endMessage);
 var endQuizInstructions = "Your final score is: ";
 
 // We start with the first question
@@ -59,7 +63,7 @@ function displayQuestion() {
        choiceContainer.appendChild(button); 
     });
 }
-
+var quizEnd = false; 
 function startCountDown() {
 
         var countdown = 100;
@@ -70,9 +74,11 @@ function startCountDown() {
             countDisplay.textContent = countdown;
             if (countdown <= 0) {
                 clearInterval(timer);
+                if(!quizEnd) {
                 endQuiz();
+                }
             }
-        }, 1000);//every choices array now has button with class and value
+        }, 100);//every choices array now has button with class and value
     }
 
 
@@ -97,7 +103,7 @@ function checkAnswer() {
     currentQuestionIndex++;
 
     // If there are no more questions, end the quiz
-    if (currentQuestionIndex === questions.length) {
+    if (currentQuestionIndex === questions.length && !quizEnd) {
         endQuiz();
     } else {
         displayQuestion();
@@ -107,9 +113,45 @@ function checkAnswer() {
 
     // Function to end the quiz
 // Function to end the quiz
+// Function to end the quiz
 function endQuiz() {
-    // Clear out the question are
+    quizEnd = true;
+    // Clear out the question area
+    document.getElementById('question').textContent = '';
+    document.getElementById('choices').innerHTML = '';
+
+    // Display the "All DONE!" message
+    var endMessage = document.createElement('h2');
+    endMessage.textContent = endQuizMessage;
+    document.body.appendChild(endMessage);
+
+    // Show the final score
+    var finalScore = document.createElement('p');
+    finalScore.textContent = endQuizInstructions + score; // score is the variable you used to keep track of correct answers
+    document.body.appendChild(finalScore);
+
+    // Input for player's name
+    var nameInput = document.createElement('input');
+    nameInput.setAttribute('id', 'playerName');
+    nameInput.setAttribute('placeholder', 'Your name');
+    nameInput.style.width = '200px'; // set width
+    nameInput.style.height = '30px'; // set height
+    nameInput.style.border = '1px solid black'; // set border
+    document.body.appendChild(nameInput);
+
+    // Submit button to save the score
+    var submitButton = document.createElement('button');
+    submitButton.textContent = 'Submit';
+    submitButton.setAttribute('onclick', 'saveScore()'); // assuming 'saveScore' is a function that you've defined to handle saving the score
+    document.body.appendChild(submitButton);
+
+    // Button to view high scores
+    var viewScoresButton = document.createElement('button');
+    viewScoresButton.textContent = 'View High Scores';
+    viewScoresButton.setAttribute('onclick', 'viewHighScores()'); // assuming 'viewHighScores' is a function that you've defined to handle viewing the high scores
+    document.body.appendChild(viewScoresButton);
 }
+
 // Start the quiz when the page loads
 displayQuestion();
 startCountDown();

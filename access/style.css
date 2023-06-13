@@ -64,6 +64,14 @@ main {
     font-size: 18px;
 }
 
+.endMessage {
+    display: flex;
+    flex-direction: column;
+    color: blue;
+  font-size: 24px;
+  text-align: center;
+}
+
 footer {
     margin: 7% 10%;
     padding-right: 7%;
