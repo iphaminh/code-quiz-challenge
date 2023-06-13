@@ -26,12 +26,6 @@ var questions = [
         answer: "Sugary drinks"
     },
 ];
-var endQuizMessage = "All DONE!";
-var endMessage = document.createElement("h2");
-endMessage.textContent = endQuizMessage
-endMessage.setAttribute('class', 'endMessage');
-document.body.appendChild(endMessage);
-var endQuizInstructions = "Your final score is: ";
 
 // We start with the first question
 var currentQuestionIndex = 0;
@@ -110,47 +104,50 @@ function checkAnswer() {
     }
 }
 
-
-    // Function to end the quiz
-// Function to end the quiz
-// Function to end the quiz
 function endQuiz() {
+    var endQuizMessage = "All DONE!";
+    var endQuizInstructions = "Your final score is: ";
+    var content = document.getElementById('content');
+
     quizEnd = true;
+
     // Clear out the question area
     document.getElementById('question').textContent = '';
     document.getElementById('choices').innerHTML = '';
 
-    // Display the "All DONE!" message
+    // Create and append the "All DONE!" message
     var endMessage = document.createElement('h2');
     endMessage.textContent = endQuizMessage;
-    document.body.appendChild(endMessage);
+    endMessage.setAttribute('class', 'endMessage');
+    content.appendChild(endMessage);
 
     // Show the final score
     var finalScore = document.createElement('p');
-    finalScore.textContent = endQuizInstructions + score; // score is the variable you used to keep track of correct answers
-    document.body.appendChild(finalScore);
+    finalScore.setAttribute('id', 'finalScore');
+    finalScore.textContent = endQuizInstructions + score; 
+    content.appendChild(finalScore);
 
     // Input for player's name
     var nameInput = document.createElement('input');
     nameInput.setAttribute('id', 'playerName');
     nameInput.setAttribute('placeholder', 'Your name');
-    nameInput.style.width = '200px'; // set width
-    nameInput.style.height = '30px'; // set height
-    nameInput.style.border = '1px solid black'; // set border
-    document.body.appendChild(nameInput);
+    content.appendChild(nameInput);
 
     // Submit button to save the score
     var submitButton = document.createElement('button');
     submitButton.textContent = 'Submit';
-    submitButton.setAttribute('onclick', 'saveScore()'); // assuming 'saveScore' is a function that you've defined to handle saving the score
-    document.body.appendChild(submitButton);
+    submitButton.setAttribute('onclick', 'saveScore()'); 
+    content.appendChild(submitButton);
 
     // Button to view high scores
     var viewScoresButton = document.createElement('button');
     viewScoresButton.textContent = 'View High Scores';
-    viewScoresButton.setAttribute('onclick', 'viewHighScores()'); // assuming 'viewHighScores' is a function that you've defined to handle viewing the high scores
-    document.body.appendChild(viewScoresButton);
+    viewScoresButton.setAttribute('onclick', 'viewHighScores()'); 
+    content.appendChild(viewScoresButton);
 }
+
+
+
 
 // Start the quiz when the page loads
 displayQuestion();
